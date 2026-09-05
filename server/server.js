@@ -71,7 +71,8 @@ app.use((err, req, res, next) => {
   });
 });
 
-if (!process.env.VERCEL) {
+if (require.main === module) {
+  const PORT = process.env.PORT || 5001;
   app.listen(PORT, () => {
     console.log(`=======================================================`);
     console.log(`🏛  CivicBridge AI Backend Running on Port ${PORT}`);
