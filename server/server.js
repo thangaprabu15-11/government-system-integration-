@@ -71,12 +71,16 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`=======================================================`);
-  console.log(`🏛  CivicBridge AI Backend Running on Port ${PORT}`);
-  console.log(`🔗 API Base: http://localhost:${PORT}/api`);
-  console.log(`🏛 Mock Gov APIs: http://localhost:${PORT}/mock-api`);
-  console.log(`👤 Demo Citizen: demo@civicbridge.ai / Demo@123`);
-  console.log(`👑 Demo Admin: admin@civicbridge.ai / Admin@123`);
-  console.log(`=======================================================`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`=======================================================`);
+    console.log(`🏛  CivicBridge AI Backend Running on Port ${PORT}`);
+    console.log(`🔗 API Base: http://localhost:${PORT}/api`);
+    console.log(`🏛 Mock Gov APIs: http://localhost:${PORT}/mock-api`);
+    console.log(`👤 Demo Citizen: demo@civicbridge.ai / Demo@123`);
+    console.log(`👑 Demo Admin: admin@civicbridge.ai / Admin@123`);
+    console.log(`=======================================================`);
+  });
+}
+
+module.exports = app;
